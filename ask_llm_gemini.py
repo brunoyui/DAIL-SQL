@@ -54,17 +54,15 @@ if __name__ == '__main__':
 
             # parse result
             print(res)
-            for sql in res["text"]:
-                # remove \n and extra spaces
-                print(sql)
-                sql = " ".join(sql.replace("\n", " ").split())
-                sql = process_duplication(sql)
-                # python version should >= 3.8
-                if sql.startswith("SELECT"):
-                    f.write(sql + "\n")
-                elif sql.startswith(" "):
-                    f.write("SELECT" + sql + "\n")
-                else:
-                    f.write("SELECT " + sql + "\n")
+            sql = res["text"]
+            print(sql)
+            sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split())
+            # python version should >= 3.8
+            if sql.startswith("SELECT"):
+                f.write(sql + "\n")
+            elif sql.startswith(" "):
+                f.write("SELECT" + sql + "\n")
+            else:
+                f.write("SELECT " + sql + "\n")
                 
 
