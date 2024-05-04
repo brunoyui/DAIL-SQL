@@ -93,5 +93,6 @@ class BasicICLPrompt(object):
             "prompt": prompt,
             "response": response_clean, 
             "n_examples": n_valid_example,
-            "db_id": target["db_id"]
+            "db_id": target["db_id"],
+            "id": target["id"]
         }

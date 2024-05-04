@@ -1,0 +1,20 @@
+{
+    "questions": [
+        {
+            "prompt_tokens": 0,
+            "prompt": "### Complete sqlite SQL query only and with no explanation\n### SQLite SQL tables, with their properties:\n#\n# events_log(id, activity, timestamp, resource, cost, idcase)\n#\n### How many 'end trip' activities are there in the event log?\nSELECT ",
+            "response": "count(*) FROM events_log WHERE activity = 'End trip'",
+            "n_examples": 0,
+            "db_id": "events_log",
+            "id": "1_0"
+        },
+        {
+            "prompt_tokens": 0,
+            "prompt": "### Complete sqlite SQL query only and with no explanation\n### SQLite SQL tables, with their properties:\n#\n# events_log(id, activity, timestamp, resource, cost, idcase)\n#\n### How many 'end trip' activities do we have?\nSELECT ",
+            "response": "count(*) FROM events_log WHERE activity = 'End trip'",
+            "n_examples": 0,
+            "db_id": "events_log",
+            "id": "1_1"
+        }
+    ]
+}
