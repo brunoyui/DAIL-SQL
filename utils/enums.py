@@ -87,3 +87,7 @@ class LLM:
     LLAMA_7B = "llama-7b"
     ALPACA_7B = "alpaca-7b"
     # TONG_YI_QIAN_WEN = "qwen-v1"
+
+    GEMINI_1_0_PRO = "gemini-1.0-pro"
+    GEMINI_1_0_PRO_001 = "gemini-1.0-pro-001"
+    GEMINI_1_5_PRO = "gemini-1.5-pro-latest"
