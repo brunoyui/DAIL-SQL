@@ -56,7 +56,7 @@ if __name__ == '__main__':
             print(res)
             sql = res["text"]
             print(sql)
-            sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split())
+            sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split()
             # python version should >= 3.8
             if sql.startswith("SELECT"):
                 f.write(sql + "\n")
