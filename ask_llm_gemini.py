@@ -47,15 +47,14 @@ if __name__ == '__main__':
             if i >= args.end_index:
                 break
             try:
-                print(batch)
                 res = ask_llm(args.model, batch, args.gemini_api_key)
             except Exception as e:
                 print(f"exception: {e}", end="\n")
                 res = ""
 
             # parse result
-            token_cnt += res["total_tokens"]
-            for sql in res["response"]:
+            print(res)
+            for sql in res["text"]:
                 # remove \n and extra spaces
                 print(sql)
                 sql = " ".join(sql.replace("\n", " ").split())
