@@ -52,17 +52,16 @@ if __name__ == '__main__':
                 print(f"exception: {e}", end="\n")
                 res = ""
 
-            # parse result
-            print(res)
-            sql = res.text
-            print(sql)
-            sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split()
-            # python version should >= 3.8
-            if sql.startswith("SELECT"):
-                f.write(sql + "\n")
-            elif sql.startswith(" "):
-                f.write("SELECT" + sql + "\n")
-            else:
-                f.write("SELECT " + sql + "\n")
+            for sql in res.text:
+                # remove \n and extra spaces
+                sql = " ".join(sql.replace("\n", " ").split())
+                # python version should >= 3.8
+                if sql.startswith("SELECT"):
+                    f.write(sql + "\n")
+                elif sql.startswith(" "):
+                    f.write("SELECT" + sql + "\n")
+                else:
+                    f.write("SELECT " + sql + "\n")
+                print(sql)
                 
 
