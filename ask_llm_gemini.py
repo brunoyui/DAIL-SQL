@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
             # parse result
             print(res)
-            sql = res["text"]
+            sql = res.text
             print(sql)
             sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split()
             # python version should >= 3.8
