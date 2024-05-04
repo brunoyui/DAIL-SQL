@@ -51,8 +51,8 @@ def ask_llm(model: str, batch: list, api_key: str):
     while True:
         try:
             mod = get_model(api_key, model)
-            print(mod)
             response = mod.generate_content(batch)
+            break
         except Exception as e:
             n_repeat += 1
             print(f"Repeat for the {n_repeat} times for exception: {e}", end="\n")
