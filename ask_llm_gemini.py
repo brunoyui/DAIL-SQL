@@ -49,8 +49,8 @@ if __name__ == '__main__':
             try:
                 print(batch)
                 res = ask_llm(args.model, batch, args.gemini_api_key)
-            except openai.error.InvalidRequestError:
-                print(f"The {i}-th question has too much tokens! Return \"SELECT\" instead")
+            except Exception as e:
+                print(f"exception: {e}", end="\n")
                 res = ""
 
             # parse result
