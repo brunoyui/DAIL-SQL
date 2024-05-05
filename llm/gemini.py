@@ -25,7 +25,7 @@ def get_model(api_key, model):
         },
     ]
     generation_config = {}
-    if model == LLM.GEMINI_1_0_PRO or model == GEMINI_1_0_PRO_001:
+    if model == LLM.GEMINI_1_0_PRO or model == LLM.GEMINI_1_0_PRO_001:
         generation_config = {
             "temperature": 0,
             "top_p": 1,
@@ -35,7 +35,7 @@ def get_model(api_key, model):
     else:
         generation_config = {
             "temperature": 0,
-            "top_p": 0.95,
+            "top_p": 1,
             "top_k": 0,
             "max_output_tokens": 8192,  
         }

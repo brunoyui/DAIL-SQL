@@ -53,9 +53,12 @@ if __name__ == '__main__':
                 res = ""
 
             # parse result
-            print(res)
             sql = res.text
+            sql = " ".join(sql.replace("\n", " ").replace("`", "").replace("sql", "").split())
             print(sql)
-            sql = sql.replace("\n", " ").replace("```sql", "").replace("```", "").split()
-            # python version should >= 3.8
-            f.write(sql + "\n")
+            if sql.startswith("SELECT"):
+              f.write(sql + "\n")
+            elif sql.startswith(" "):
+              f.write("SELECT" + sql + "\n")
+            else:
+              f.write("SELECT " + sql + "\n")
