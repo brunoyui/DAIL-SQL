@@ -22,8 +22,10 @@ if __name__ == '__main__':
     parser.add_argument("--split", type=str, choices=["train", "test"], default="test",  required=True)
     parser.add_argument("--k_shot", type=int, default=0, help="Number of examples")
     parser.add_argument("--prompt_repr", type=str, choices=[REPR_TYPE.CODE_REPRESENTATION,
+                                                            REPR_TYPE.CODE_REPRESENTATION_PT,
                                                             REPR_TYPE.TEXT_REPRESENTATION,
                                                             REPR_TYPE.OPENAI_DEMOSTRATION,
+                                                            REPR_TYPE.OPENAI_DEMOSTRATION_PT,
                                                             REPR_TYPE.BASIC,
                                                             REPR_TYPE.ALPACA_SFT,
                                                             REPR_TYPE.OPENAI_DEMOSTRATION_WFK,

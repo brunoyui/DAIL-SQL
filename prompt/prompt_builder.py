@@ -10,10 +10,14 @@ from prompt.PromptICLTemplate import BasicICLPrompt
 def get_repr_cls(repr_type: str):
     if repr_type == REPR_TYPE.CODE_REPRESENTATION:
         repr_cls = SQLPrompt
+    if repr_type == REPR_TYPE.CODE_REPRESENTATION_PT:
+        repr_cls = SQLPtPrompt
     elif repr_type == REPR_TYPE.TEXT_REPRESENTATION:
         repr_cls = TextPrompt
     elif repr_type == REPR_TYPE.OPENAI_DEMOSTRATION:
         repr_cls = NumberSignPrompt
+    elif repr_type == REPR_TYPE.OPENAI_DEMOSTRATION_PT:
+        repr_cls = NumberSignPtPrompt
     elif repr_type == REPR_TYPE.BASIC:
         repr_cls = BaselinePrompt
     elif repr_type == REPR_TYPE.ALPACA_SFT:

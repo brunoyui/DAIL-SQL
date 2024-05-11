@@ -38,6 +38,27 @@ class SQLPrompt(BasicPrompt):
         return prompt
 
 
+class SQLPtPrompt(BasicPrompt):
+    template_info =   "/* Dado o seguinte esquema de banco de dados: */\n" \
+                      "{}"
+    template_question =  "/* Responda o seguinte: {} */"
+
+    def format_question(self, example: dict):
+        sqls = get_sql_for_database(example["path_db"])
+
+        prompt_info = self.template_info.format("\n\n".join(sqls))
+        prompt_extra_info = self.get_extra_info(example["db_id"])
+        prompt_question = self.template_question.format(example["question"])
+
+        if prompt_extra_info is None or prompt_extra_info == "":
+            prompt_components = [prompt_info, prompt_question]
+        else:
+            prompt_components = [prompt_info, prompt_extra_info, prompt_question]
+
+        prompt = "\n\n".join(prompt_components)
+        return prompt
+
+
 class TextPrompt(BasicPrompt):
     template_info = "Given the following database schema:\n" \
                   "{}"
@@ -62,6 +83,29 @@ class TextPrompt(BasicPrompt):
 class NumberSignPrompt(BasicPrompt):
     template_info = "### Complete sqlite SQL query only and with no explanation\n" \
                     "### SQLite SQL tables, with their properties:\n" \
+                    "#\n" \
+                    "{}\n" \
+                    "#"
+    template_question = "### {}"
+
+    def format_question(self, example: dict):
+        schemas = "\n".join([f"# {_.name}({', '.join(_.schema)})" for _ in example["tables"]])
+
+        prompt_info = self.template_info.format(schemas)
+        prompt_extra_info = self.get_extra_info(example["db_id"])
+        prompt_question = self.template_question.format(example["question"])
+
+        if prompt_extra_info is None or prompt_extra_info == "":
+            prompt_components = [prompt_info,prompt_question]
+        else:
+            prompt_components = [prompt_info, prompt_extra_info, prompt_question]
+
+        prompt = "\n".join(prompt_components)
+        return prompt
+
+class NumberSignPtPrompt(BasicPrompt):
+    template_info = "### Complete somente a consulta sqlite SQL e sem explicação\n" \
+                    "### Tabelas SQLite SQL, com suas propriedades:\n" \
                     "#\n" \
                     "{}\n" \
                     "#"
