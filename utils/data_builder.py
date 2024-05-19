@@ -100,7 +100,7 @@ class BasicDataset(object):
             db_id_to_table_json[table_json["db_id"]] = table_json
         schemas = [db_id_to_table_json[d["db_id"]] for d in datas]
         queries = [data["query"] for data in datas]
-        pre_queries = self.get_pre_skeleton(queries, schemas)
+        pre_queries = None #self.get_pre_skeleton(queries, schemas)
         return self.data_pre_process(datas, linking_infos, pre_queries)
 
     # get all test information
