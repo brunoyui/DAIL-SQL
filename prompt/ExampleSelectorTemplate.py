@@ -228,7 +228,10 @@ class EuclideanDistanceQuestionMaskSelector(BasicExampleSelector):
         top_pairs = list()
         for d, index in pairs_sorted:
             similar_db_id = train_json[index]["db_id"]
+            similar_group_id = train_json[index]["group_id"]
             if cross_domain and similar_db_id == target["db_id"]:
+                continue
+            if similar_group_id == target["group_id"]:
                 continue
             top_pairs.append((index, d))
             if len(top_pairs) >= num_example:
