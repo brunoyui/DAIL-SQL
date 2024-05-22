@@ -210,6 +210,7 @@ class EuclideanDistanceQuestionMaskSelector(BasicExampleSelector):
         self.value_token = "<unk>" # the "<unk>" is the unknown token of all-mpnet-base-v2
 
         from sentence_transformers import SentenceTransformer
+        print(self.train_json)
         train_mask_questions = mask_question_with_schema_linking(self.train_json, mask_tag=self.mask_token, value_tag=self.value_token)
         self.bert_model = SentenceTransformer(self.SELECT_MODEL, device="cpu")
         self.train_embeddings = self.bert_model.encode(train_mask_questions)
