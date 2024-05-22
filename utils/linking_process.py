@@ -160,6 +160,8 @@ class SpiderEncoderV2Preproc(abstract_preproc.AbstractPreproc):
             cv_link = compute_cell_value_linking(question, schema)
         else:
             cv_link = {"num_date_match": {}, "cell_match": {}}
+        print('sc_link')
+        print(sc_link)
         return {
             'raw_question': item['question'],
             'db_id': schema.db_id,
